@@ -1,6 +1,8 @@
 package com.driver.services;
 
 import com.driver.model.Driver;
+import com.driver.repository.DriverRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public interface DriverService {
 

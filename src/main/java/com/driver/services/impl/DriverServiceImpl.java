@@ -13,10 +13,7 @@ import com.driver.repository.DriverRepository;
 public class DriverServiceImpl implements DriverService {
 
 	@Autowired
-	DriverRepository driverRepository3;
-
-	@Autowired
-	CabRepository cabRepository3;
+	 DriverRepository driverRepository3;
 
 	@Override
 	public void register(String mobile, String password){
@@ -30,6 +27,7 @@ public class DriverServiceImpl implements DriverService {
 		cab.setPerKmRate(10);
 		cab.setAvailable(true);
 		driver.setCab(cab);
+		cab.setDriver(driver);
 
 		//saving the details in repository
 		driverRepository3.save(driver);
@@ -46,7 +44,7 @@ public class DriverServiceImpl implements DriverService {
 		//Set the status of respective car to unavailable
 		Driver driver=driverRepository3.findById(driverId).get();
 		Cab cab=driver.getCab();
-		cab.setAvailable(false);
+		cab.setAvailable(!cab.isAvailable());
 		driverRepository3.save(driver);
 	}
 }
